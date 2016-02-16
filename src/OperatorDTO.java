@@ -38,7 +38,7 @@ public class OperatorDTO {
 		return ini;
 	}
 
-	public int getCpr(int oprId) {
+	public long getCpr(int oprId) {
 		return cpr;
 	}
 
