@@ -67,9 +67,11 @@ public class OperatorDTO {
 	}
 	
 	public String generatePassword(){
+		int [] asciivalues = generateAsciiTable();
 		String password = "";
 		while(passwordValidation(password) == false){
-			int j = (int)(Math.random() * 4 + 1);
+			int j = (int)(Math.random() * 69 + 1);
+			password = (password + )
 			
 		}
 		return password;
@@ -163,5 +165,32 @@ public class OperatorDTO {
 			if(k[i] >= 7);		
 			}
 		return false;
+	}
+	
+	public static int[] generateAsciiTable(){
+		int[] out = new int [69];
+		int k = 97;
+		for (int i=0 ; i < 26 ; i++){
+			out[i]=k;
+			k++;
+		}
+		k = 65;
+		for (int i=26 ; i < 53 ; i++){
+			out[i]=k;
+			k++;
+		}
+		k=48;
+		for (int i=53 ; i < 63 ; i++){
+			out[i]=k;
+			k++;
+		}
+		out[63] = 46;
+		out[64] = 45;
+		out[65] = 95;
+		out[66] = 43;
+		out[67] = 33;
+		out[68] = 63;
+		out[69] = 61;
+		return out;
 	}
 }
