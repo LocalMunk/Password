@@ -71,7 +71,7 @@ public class OperatorDTO {
 		String password = "";
 		while(passwordValidation(password) == false){
 			int j = (int)(Math.random() * 69 + 1);
-			password = (password + )
+			password = (password);
 			
 		}
 		return password;
