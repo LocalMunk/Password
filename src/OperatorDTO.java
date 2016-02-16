@@ -4,7 +4,7 @@ public class OperatorDTO {
 	private int oprId;
 	private String oprNavn;
 	private String ini;
-	private int cpr;
+	private long cpr;
 	private String password;
 	private ArrayList<Integer> Users = new ArrayList<Integer>();
 
@@ -17,13 +17,13 @@ public class OperatorDTO {
 
 	private int userCounter = 0;
 
-	public OperatorDTO(String oprNavn, String ini, int cpr, String password) {
+	public OperatorDTO(String oprNavn, long cpr) {
 		this.setOprId(Users.get(userCounter));
 		userCounter++;
 		this.oprNavn = oprNavn;
 		this.ini = generateIni(oprNavn);
 		this.cpr = cpr;
-		this.password = password;
+		this.password = generatePassword();
 	}
 
 	public String getOprNavn(int oprId) {
@@ -71,7 +71,7 @@ public class OperatorDTO {
 		String password = "";
 		while(passwordValidation(password) == false){
 			int j = (int)(Math.random() * 69 + 1);
-			password = (password);
+			password = (password + (char)asciivalues[j]);
 			
 		}
 		return password;
@@ -162,13 +162,15 @@ public class OperatorDTO {
 				return true;
 			}
 			i++;
-			if(k[i] >= 7);		
+			if(i >= 7){
+				return false;
 			}
+		}
 		return false;
 	}
 	
 	public static int[] generateAsciiTable(){
-		int[] out = new int [69];
+		int[] out = new int [70];
 		int k = 97;
 		for (int i=0 ; i < 26 ; i++){
 			out[i]=k;
