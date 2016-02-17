@@ -4,7 +4,6 @@ public class TUI {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int i = 0;
 		Controller controller = new Controller();
 		OperatorDTO loggedin = null;
 		

@@ -16,6 +16,7 @@ public class Controller {
 	}
 	
 	public void addUser(){
+		keyboard = new Scanner(System.in);
 		System.out.println("Skriv brugerens navn:");
 		String navn = keyboard.nextLine();
 		System.out.println("Skriv brugerens CPR:");
