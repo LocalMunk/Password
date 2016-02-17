@@ -15,6 +15,12 @@ public class TUI {
 			System.out.println("3. Afvejning");
 			System.out.println("4. Afslut");
 			System.out.println("5. log-in");
+			if (loggedin != null){
+				System.out.println("6. log ud");
+			}
+			if (loggedin != null && loggedin.isSysAdmin()){
+				System.out.println("7. Admin controls");
+			}
 			System.out.println();
 			switch (sc.nextInt()) {
 
@@ -56,6 +62,15 @@ public class TUI {
 				}
 				else{
 					System.out.println("Forkert user id eller password");
+				}
+				break;
+			case 6:
+				loggedin = null;
+				break;
+			case 7: 
+				if (loggedin.isSysAdmin()){
+					System.out.println("Skriv oprId på den person du vil ændre på");
+					controller.updateUser(sc.nextInt());
 				}
 				break;
 			}

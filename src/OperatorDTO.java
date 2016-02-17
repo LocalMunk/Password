@@ -9,7 +9,7 @@ public class OperatorDTO {
 	private String password;
 	private ArrayList<Integer> Users = new ArrayList<Integer>();
 	private boolean SysAdmin;
-	Scanner keyboard;
+	private Scanner keyboard;
 
 	{
 
@@ -44,6 +44,9 @@ public class OperatorDTO {
 
 	public long getCpr(int oprId) {
 		return cpr;
+	}
+	public void setCpr(int oprId, long cpr) {
+		this.cpr = cpr;
 	}
 
 	public String getPassword() {
@@ -225,5 +228,8 @@ public class OperatorDTO {
 	public void setSysAdmin(boolean SysAdmin, String pw) {
 		this.password = pw;
 		this.SysAdmin = SysAdmin;
+	}
+	public void resetPassword(int oprId, String password){
+		this.password = password;
 	}
 }
