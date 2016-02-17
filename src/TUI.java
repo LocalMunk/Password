@@ -3,26 +3,31 @@ import java.util.Scanner;
 public class TUI {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		OperatorDTO[] Operators = new OperatorDTO[88];
 		int i = 0;
-
+		Controller controller = new Controller();
+		OperatorDTO loggedin = null;
+		
 		while (true) {
 			System.out.println("Velkommen!");
 			System.out.println("1. Opret ny bruger");
 			System.out.println("2. Skift password");
 			System.out.println("3. Afvejning");
 			System.out.println("4. Afslut");
+			System.out.println("5. log-in");
 			switch (sc.nextInt()) {
 
 			case 1:
-				System.out.println("Skriv dit navn og derefter cpr nr.");
-				String navn = sc.next();
-				long cpr = sc.nextLong();
-				Operators[i] = new OperatorDTO(navn, cpr);
-				System.out.println(Operators[i].getOprId());
-				i++;
+				if(loggedin != null){
+					if(loggedin.isSysAdmin()){
+						controller.addUser();
+					}
+					else{
+						System.out.println("Access denied");
+					}
+				}else{
+					System.out.println("log in først");
+				}
 				break;
 
 			case 2:
@@ -38,6 +43,20 @@ public class TUI {
 			case 4:
 				System.out.println("Systemet lukker");
 				System.exit(0);
+				break;
+				
+			case 5:
+				loggedin = null;
+				System.out.println("Skriv dit user ID og dit password:");
+				int id = sc.nextInt();
+				String pass = sc.next();
+				if(controller.getOperator(id).getPassword().equals(pass)){
+					System.out.println("Du er logget ind i systemet");
+					loggedin = controller.getOperator(id);
+				}
+				else{
+					System.out.println("Forkert user id eller password");
+				}
 				break;
 			}
 

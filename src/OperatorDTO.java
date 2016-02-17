@@ -7,6 +7,7 @@ public class OperatorDTO {
 	private long cpr;
 	private String password;
 	private ArrayList<Integer> Users = new ArrayList<Integer>();
+	private boolean SysAdmin;
 
 	{
 
@@ -17,13 +18,13 @@ public class OperatorDTO {
 
 	private int userCounter = 0;
 
-	public OperatorDTO(String oprNavn, long cpr) {
-		this.setOprId(Users.get(userCounter));
-		userCounter++;
+	public OperatorDTO(String oprNavn, long cpr, int oprid) {
+		this.oprId=oprid;
 		this.oprNavn = oprNavn;
 		this.ini = generateIni(oprNavn);
 		this.cpr = cpr;
 		this.password = generatePassword();
+		this.setSysAdmin(false);
 	}
 
 	public String getOprNavn(int oprId) {
@@ -42,11 +43,11 @@ public class OperatorDTO {
 		return cpr;
 	}
 
-	public String getPassword(int oprId) {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(int oprId, String newPw) {
+	public void setPassword(String newPw) {
 		this.password = newPw;
 	}
 	
@@ -194,5 +195,13 @@ public class OperatorDTO {
 		out[68] = 63;
 		out[69] = 61;
 		return out;
+	}
+
+	public boolean isSysAdmin() {
+		return SysAdmin;
+	}
+
+	public void setSysAdmin(boolean SysAdmin) {
+		this.SysAdmin = SysAdmin;
 	}
 }
