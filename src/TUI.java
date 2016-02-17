@@ -8,12 +8,14 @@ public class TUI {
 		OperatorDTO loggedin = null;
 		
 		while (true) {
+			System.out.println();
 			System.out.println("Velkommen!");
 			System.out.println("1. Opret ny bruger");
 			System.out.println("2. Skift password");
 			System.out.println("3. Afvejning");
 			System.out.println("4. Afslut");
 			System.out.println("5. log-in");
+			System.out.println();
 			switch (sc.nextInt()) {
 
 			case 1:
@@ -30,8 +32,7 @@ public class TUI {
 				break;
 
 			case 2:
-				System.out.println("Skriv dit oprId og derefter dit nye password");
-				// NewUser.setPassword(oprId, newPw);
+				loggedin.setPassword(loggedin.getOprId());
 				break;
 
 			case 3:
