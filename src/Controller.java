@@ -43,7 +43,7 @@ public class Controller {
 	}
 
 	public void deleteUser(int oprId) {
-		users[oprId] = null;
+		users[oprId-11] = null;
 	}
 
 	public void updateUser(int oprId) {
