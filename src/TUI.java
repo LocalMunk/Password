@@ -68,7 +68,7 @@ public class TUI {
 				loggedin = null;
 				break;
 			case 7: 
-				if (loggedin.isSysAdmin()){
+				if (loggedin != null && loggedin.isSysAdmin()){
 					System.out.println("Skriv oprId på den person du vil ændre på");
 					controller.updateUser(sc.nextInt());
 				}
