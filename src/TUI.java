@@ -6,7 +6,7 @@ public class TUI {
 		Scanner sc = new Scanner(System.in);
 		Controller controller = new Controller();
 		OperatorDTO loggedin = null;
-		
+
 		while (true) {
 			System.out.println();
 			System.out.println("Velkommen!");
@@ -15,25 +15,24 @@ public class TUI {
 			System.out.println("3. Afvejning");
 			System.out.println("4. Afslut");
 			System.out.println("5. log-in");
-			if (loggedin != null){
+			if (loggedin != null) {
 				System.out.println("6. log ud");
 			}
-			if (loggedin != null && loggedin.isSysAdmin()){
+			if (loggedin != null && loggedin.isSysAdmin()) {
 				System.out.println("7. Admin controls");
 			}
 			System.out.println();
 			switch (sc.nextInt()) {
 
 			case 1:
-				if(loggedin != null){
-					if(loggedin.isSysAdmin()){
+				if (loggedin != null) {
+					if (loggedin.isSysAdmin()) {
 						controller.addUser();
-					}
-					else{
+					} else {
 						System.out.println("Access denied");
 					}
-				}else{
-					System.out.println("log in først");
+				} else {
+					System.out.println("Log in fÃ¸rst");
 				}
 				break;
 
@@ -50,27 +49,31 @@ public class TUI {
 				System.out.println("Systemet lukker");
 				System.exit(0);
 				break;
-				
+
 			case 5:
 				loggedin = null;
 				System.out.println("Skriv dit user ID og dit password:");
 				int id = sc.nextInt();
 				String pass = sc.next();
-				if(controller.getOperator(id).getPassword().equals(pass)){
+				if (controller.getOperator(id).getPassword().equals(pass)) {
 					System.out.println("Du er logget ind i systemet");
 					loggedin = controller.getOperator(id);
-				}
-				else{
+				} else {
 					System.out.println("Forkert user id eller password");
 				}
 				break;
 			case 6:
 				loggedin = null;
 				break;
-			case 7: 
-				if (loggedin != null && loggedin.isSysAdmin()){
-					System.out.println("Skriv oprId på den person du vil ændre på");
-					controller.updateUser(sc.nextInt());
+			case 7:
+				if (loggedin != null && loggedin.isSysAdmin()) {
+					System.out.println("Skriv oprId pÃ¥ den person du vil Ã¦ndre pÃ¥:");
+					int brugerId = sc.nextInt();
+					if (controller.getOperator(brugerId) != null) {
+						controller.updateUser(brugerId);
+					} else {
+						System.out.println("oprId findes ikke.");
+					}
 				}
 				break;
 			}

@@ -50,32 +50,48 @@ public class Controller {
 		boolean loop = true;
 		while (loop) {
 			System.out.println();
-			System.out.println("Du er ved at �ndre i " + users[oprId-11].getOprNavn(oprId));
+			System.out.println("Du er ved at ændre i " + users[oprId-11].getOprNavn(oprId));
 			System.out.println("1. Skift navn");
 			System.out.println("2. Skift password");
 			System.out.println("3. Skift cpr");
 			System.out.println("4. Set bruger til admin");
-			System.out.println("5. Afslut");
+			System.out.println("5. Slet bruger");
+			System.out.println("6. Afslut");
 			System.out.println();
 			keyboard = new Scanner(System.in);
 			switch (keyboard.nextInt()) {
 			case 1:
-				System.out.println("Skriv hvad du vil �ndre navnet til");
+				System.out.println("Skriv hvad du vil ændre navnet på brugeren til:");
 				users[oprId-11].setOprNavn(oprId, keyboard.next());
 				break;
 			case 2:
-				System.out.println(users[oprId].getPassword());
+				System.out.println("Du er ved at ændre password for brugeren: " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Brugerens gamle password er: " + users[oprId-11].getPassword());
 				users[oprId-11].setPassword(oprId);
 				break;
 			case 3:
-				System.out.println("Skriv hvad du vil cpr til");
+				System.out.println("Skriv hvad du vil ændre cpr til:");
 				users[oprId-11].setCpr(oprId, keyboard.nextLong());
 				break;
 			case 4:
-				System.out.println("Skriv hvad det nye admin password skal v�re");
+				System.out.println("Den nye admin er:  " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Skriv hvad det nye admin password skal være:");
 				users[oprId-11].setSysAdmin(true, keyboard.next());
 				break;
 			case 5:
+				System.out.println("Du er ved at slette følgende bruger:  " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Er du sikker? Tryk 1 for ja, tryk 2 for nej");
+				switch(keyboard.nextInt()){
+				case 1:
+					deleteUser(oprId);
+					System.out.println("Brugeren er nu slettet.");
+					loop = false;
+					break;
+				case 2: 
+					break;
+				}
+				break;
+			case 6:
 				loop = false;
 				break;
 			}
