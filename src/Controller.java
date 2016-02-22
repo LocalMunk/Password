@@ -48,7 +48,13 @@ public class Controller {
 	}
 
 	public void deleteUser(int oprId) {
-		users[oprId-11] = null;
+		if (oprId-11 == 0){
+			System.out.println("Du kan ikke slette basis admin");
+		} else {
+			users[oprId-11] = null;	
+			System.out.println("Brugeren er nu slettet");
+		}
+		
 	}
 
 	public void updateUser(int oprId) {
@@ -89,7 +95,6 @@ public class Controller {
 				switch(keyboard.nextInt()){
 				case 1:
 					deleteUser(oprId);
-					System.out.println("Brugeren er nu slettet.");
 					loop = false;
 					break;
 				case 2: 
