@@ -38,7 +38,7 @@ public class TUI {
 				break;
 
 			case 2:
-				loggedin.setPassword(loggedin.getOprId());
+				loggedin.setPassword();
 				break;
 
 			case 3:

@@ -61,7 +61,7 @@ public class Controller {
 		boolean loop = true;
 		while (loop) {
 			System.out.println();
-			System.out.println("Du er ved at ændre i " + users[oprId-11].getOprNavn(oprId));
+			System.out.println("Du er ved at ændre i " + users[oprId-11].getOprNavn());
 			System.out.println("1. Skift navn");
 			System.out.println("2. Skift password");
 			System.out.println("3. Skift cpr");
@@ -73,24 +73,24 @@ public class Controller {
 			switch (keyboard.nextInt()) {
 			case 1:
 				System.out.println("Skriv hvad du vil ændre navnet på brugeren til:");
-				users[oprId-11].setOprNavn(oprId, keyboard.next());
+				users[oprId-11].setOprNavn(keyboard.next());
 				break;
 			case 2:
-				System.out.println("Du er ved at ændre password for brugeren: " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Du er ved at ændre password for brugeren: " + users[oprId-11].getOprNavn());
 				System.out.println("Brugerens gamle password er: " + users[oprId-11].getPassword());
-				users[oprId-11].setPassword(oprId);
+				users[oprId-11].setPassword();
 				break;
 			case 3:
 				System.out.println("Skriv hvad du vil ændre cpr til:");
-				users[oprId-11].setCpr(oprId, keyboard.nextLong());
+				users[oprId-11].setCpr(keyboard.nextLong());
 				break;
 			case 4:
-				System.out.println("Den nye admin er:  " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Den nye admin er:  " + users[oprId-11].getOprNavn());
 				System.out.println("Skriv hvad det nye admin password skal være:");
 				users[oprId-11].setSysAdmin(true, keyboard.next());
 				break;
 			case 5:
-				System.out.println("Du er ved at slette følgende bruger:  " + users[oprId-11].getOprNavn(oprId));
+				System.out.println("Du er ved at slette følgende bruger:  " + users[oprId-11].getOprNavn());
 				System.out.println("Er du sikker? Tryk 1 for ja, tryk 2 for nej");
 				switch(keyboard.nextInt()){
 				case 1:

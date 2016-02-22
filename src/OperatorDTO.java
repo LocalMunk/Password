@@ -30,22 +30,22 @@ public class OperatorDTO {
 
 	}
 
-	public String getOprNavn(int oprId) {
+	public String getOprNavn() {
 		return oprNavn;
 	}
 
-	public void setOprNavn(int oprId, String navn) {
+	public void setOprNavn(String navn) {
 		this.oprNavn = navn;
 	}
 
-	public String getIni(int oprId) {
+	public String getIni() {
 		return ini;
 	}
 
-	public long getCpr(int oprId) {
+	public long getCpr() {
 		return cpr;
 	}
-	public void setCpr(int oprId, long cpr) {
+	public void setCpr(long cpr) {
 		this.cpr = cpr;
 	}
 
@@ -53,7 +53,7 @@ public class OperatorDTO {
 		return password;
 	}
 
-	public void setPassword(int oprId) {
+	public void setPassword() {
 		keyboard = new Scanner(System.in);
 		String gamlePw, newPw;
 		System.out.println("Skriv dit gamle password");
@@ -229,7 +229,7 @@ public class OperatorDTO {
 		this.password = pw;
 		this.SysAdmin = SysAdmin;
 	}
-	public void resetPassword(int oprId, String password){
+	public void resetPassword(String password){
 		this.password = password;
 	}
 }
