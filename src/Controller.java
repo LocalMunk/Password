@@ -38,7 +38,12 @@ public class Controller {
 	}
 
 	public OperatorDTO getOperator(int id) {
-		return users[id - 11];
+		try {
+			return users[id - 11];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Max user ID er 99");
+			return null;
+		}
 
 	}
 
