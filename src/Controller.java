@@ -31,7 +31,7 @@ public class Controller {
 	public void initSystemAdmin() {
 		users[lastAdded] = new OperatorDTO("Martin Dalby", 0000000001, currentID);
 		// users[lastAdded].setPassword("aA1bB2=");
-		users[lastAdded].setSysAdmin(true, "aA1bB2=");
+		users[lastAdded].setSysAdmin(true, "Hejmeddig1");
 		currentID++;
 		lastAdded++;
 
@@ -77,8 +77,8 @@ public class Controller {
 				break;
 			case 2:
 				System.out.println("Du er ved at ændre password for brugeren: " + users[oprId-11].getOprNavn());
-				System.out.println("Brugerens gamle password er: " + users[oprId-11].getPassword());
-				users[oprId-11].setPassword();
+				users[oprId-11].generatePassword();
+				System.out.println("Det nye password er: " + users[oprId-11].getPassword());
 				break;
 			case 3:
 				System.out.println("Skriv hvad du vil ændre cpr til:");

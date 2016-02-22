@@ -38,7 +38,36 @@ public class TUI {
 				break;
 
 			case 2:
-				loggedin.setPassword();
+				String gamlePw;
+				String newPw = null;
+				System.out.println("Skriv dit gamle password");
+				gamlePw = sc.next();
+				if (gamlePw.equals(loggedin.getPassword())) {
+					do {
+						if(newPw == null)
+							System.out.println("Skriv dit nye password");
+						else {
+							System.out.println("Dit password skal overholde mindst 3 af følgende:");
+							System.out.println("Minimum 6 tegn");
+							System.out.println("Tal");
+							System.out.println("Store og små bogstaver");
+							System.out.println("Specielle tegn");
+						}
+							
+						newPw = sc.next();
+					} while(!loggedin.passwordValidation(newPw));
+					
+					System.out.println("Skriv dit nye password igen");
+					
+					if (newPw.equals(sc.next())) {
+						System.out.println("Du har skiftet dit password");
+						loggedin.setPassword(newPw);
+					} else {
+						System.out.println("Dit password matcher ikke");
+					}
+				} else {
+					System.out.println("Forkert password");
+				}
 				break;
 
 			case 3:

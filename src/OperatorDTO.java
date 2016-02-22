@@ -53,24 +53,8 @@ public class OperatorDTO {
 		return password;
 	}
 
-	public void setPassword() {
-		keyboard = new Scanner(System.in);
-		String gamlePw, newPw;
-		System.out.println("Skriv dit gamle password");
-		gamlePw = keyboard.next();
-		if (gamlePw.equals(getPassword())) {
-			System.out.println("Skriv dit nye password");
-			newPw = keyboard.next();
-			System.out.println("Skriv dit nye password igen");
-			if (newPw.equals(keyboard.next())) {
-				System.out.println("Du har skiftet dit password");
-				this.password = newPw;
-			} else {
-				System.out.println("Dit password matcher ikke");
-			}
-		} else {
-			System.out.println("Forkert password");
-		}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String generateIni(String name) {
