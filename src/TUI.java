@@ -55,11 +55,16 @@ public class TUI {
 				System.out.println("Skriv dit user ID og dit password:");
 				int id = sc.nextInt();
 				String pass = sc.next();
-				if (controller.getOperator(id).getPassword().equals(pass)) {
+				try {
+				if (controller.getOperator(id).getPassword().equals(pass))  {
 					System.out.println("Du er logget ind i systemet");
 					loggedin = controller.getOperator(id);
 				} else {
-					System.out.println("Forkert user id eller password");
+					System.out.println("Forkert password");
+				}
+				} 
+				catch (NullPointerException e) {
+					System.out.println("User ID findes ikke");
 				}
 				break;
 			case 6:
