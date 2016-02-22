@@ -31,7 +31,7 @@ public class Controller {
 	public void initSystemAdmin() {
 		users[lastAdded] = new OperatorDTO("Martin Dalby", 0000000001, currentID);
 		// users[lastAdded].setPassword("aA1bB2=");
-		users[lastAdded].setSysAdmin(true, "Hejmeddig1");
+		users[lastAdded].setSysAdmin(true, "P4ssword");
 		currentID++;
 		lastAdded++;
 

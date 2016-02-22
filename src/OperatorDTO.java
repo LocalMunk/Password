@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class OperatorDTO {
@@ -73,15 +74,16 @@ public class OperatorDTO {
 		this.oprId = oprId;
 	}
 
-	public String generatePassword() {
-		int[] asciivalues = generateAsciiTable();
-		String password = "";
-		while (passwordValidation(password) == false) {
-			int j = (int) (Math.random() * 69 + 1);
-			password = (password + (char) asciivalues[j]);
-
-		}
-		return password;
+	public String generatePassword(){
+		int length = 8;
+		String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#€%$&/()=[]{}";
+		Random rnd = new Random();
+		
+		StringBuilder sb = new StringBuilder( length );
+		for( int i = 0; i < length; i++ ) 
+			sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+		
+	   return sb.toString();
 	}
 
 	public boolean passwordValidation(String password) {
