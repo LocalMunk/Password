@@ -14,12 +14,13 @@ public class TUI {
 			System.out.println("2. Skift password");
 			System.out.println("3. Afvejning");
 			System.out.println("4. Afslut");
-			System.out.println("5. log-in");
-			if (loggedin != null) {
-				System.out.println("6. log ud");
+			if (loggedin == null) {
+				System.out.println("5. log-in");
+			} else if (loggedin != null) {
+				System.out.println("5. log ud");
 			}
 			if (loggedin != null && loggedin.isSysAdmin()) {
-				System.out.println("7. Admin controls");
+				System.out.println("6. Admin controls");
 			}
 			System.out.println();
 			switch (sc.nextInt()) {
@@ -52,29 +53,25 @@ public class TUI {
 
 			case 5:
 				if (loggedin != null) {
-					System.out.println("Du er allerede logged ind");
-				} else {
-				loggedin = null;
-				System.out.println("Skriv dit user ID og dit password:");
-				int id = sc.nextInt();
-				String pass = sc.next();
-				try {
-				if (controller.getOperator(id).getPassword().equals(pass))  {
-					System.out.println("Du er logget ind i systemet");
-					loggedin = controller.getOperator(id);
-				} else {
-					System.out.println("Forkert password");
-				}
-				} 
-				catch (NullPointerException e) {
-					System.out.println("User ID findes ikke");
-				}
+					loggedin = null;
+				} else if (loggedin == null) {
+					loggedin = null;
+					System.out.println("Skriv dit user ID og dit password:");
+					int id = sc.nextInt();
+					String pass = sc.next();
+					try {
+						if (controller.getOperator(id).getPassword().equals(pass)) {
+							System.out.println("Du er logget ind i systemet");
+							loggedin = controller.getOperator(id);
+						} else {
+							System.out.println("Forkert password");
+						}
+					} catch (NullPointerException e) {
+						System.out.println("User ID findes ikke");
+					}
 				}
 				break;
 			case 6:
-				loggedin = null;
-				break;
-			case 7:
 				if (loggedin != null && loggedin.isSysAdmin()) {
 					System.out.println("Skriv oprId på den person du vil ændre på:");
 					int brugerId = sc.nextInt();
