@@ -51,6 +51,9 @@ public class TUI {
 				break;
 
 			case 5:
+				if (loggedin != null) {
+					System.out.println("Du er allerede logged ind");
+				} else {
 				loggedin = null;
 				System.out.println("Skriv dit user ID og dit password:");
 				int id = sc.nextInt();
@@ -65,6 +68,7 @@ public class TUI {
 				} 
 				catch (NullPointerException e) {
 					System.out.println("User ID findes ikke");
+				}
 				}
 				break;
 			case 6:
