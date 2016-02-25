@@ -12,13 +12,6 @@ public class OperatorDTO {
 	private boolean SysAdmin;
 	private Scanner keyboard;
 
-	{
-
-		for (int i = 11; i <= 99; i++) {
-			Users.add(i);
-		}
-	}
-
 	private int userCounter = 0;
 
 	public OperatorDTO(String oprNavn, long cpr, int oprid) {
